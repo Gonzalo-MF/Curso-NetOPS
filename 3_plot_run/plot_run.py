@@ -11,7 +11,7 @@ gmartinez@­icm.csic.es
 ###############################################################################
 
 base_dir          = "C:/Users/gmart/Proyectos/Curso_Cuenca_2025/"
-rrs_dir= base_dir + "2_index_run/input/"
+rrs_dir= base_dir + "2_index_run/output/"
 index_dir= base_dir + "2_index_run/output/"
 output_dirrrs = base_dir + "3_plot_run/rrs_output/" 
 output_dirpcu = base_dir + "3_plot_run/pcu_output/" 
@@ -38,7 +38,7 @@ from datetime import datetime
 ####empezamos por rrs
 
 #abrimos el archivo hecho por el grupo 1
-with open(rrs_dir+"data.dat", "r") as doc:
+with open(rrs_dir+"data_fil.dat", "r") as doc:
         lines = doc.readlines()
 # Procesar las líneas y dividirlas por ';'
 linelist       = [line.strip().split(";") for line in lines]
@@ -53,9 +53,8 @@ df             = df[1:]
 ###############################################################################          
 #necesitamos seleccionar solo la rrs de las columnas y la fecha doy y year
 
-ID                  = df['Id'].to_numpy().astype(str)
-year                = df['Year'].to_numpy().astype(int)
-rrs                 = linelist[1:,5:].astype(float)
+ID                  = df['Doy'].to_numpy().astype(str)
+rrs                 = linelist[1:,1:].astype(float)
 wl                  = list(range(400,902,2))
 doy                 = [str(i[4:]) for i in ID]
 
@@ -68,7 +67,7 @@ for f in ID:
 #seguimos por el archivo indices
 #abrimos el archivo hecho por el grupo 1
 
-with open(index_dir+"data.dat", "r") as doc:
+with open(index_dir+"index_data.dat", "r") as doc:
         lines = doc.readlines()
 # Procesar las líneas y dividirlas por ';'
 linelist_index       = [line.strip().split(";") for line in lines]
@@ -76,8 +75,8 @@ linelist_index       = [line.strip().split(";") for line in lines]
 linelist_index       = np.array(linelist_index)
 
 # linelit declaration for the memory
-index_data          = linelist_index[1:,3:].astype(float)
-index_name          = linelist_index[0,3:]
+index_data          = linelist_index[1:,1:].astype(float)
+index_name          = linelist_index[0,1:]
 index_all           = {}
 
 for j in range(len(index_data[0,:])):

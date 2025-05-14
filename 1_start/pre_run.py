@@ -7,6 +7,7 @@ gmartinez@­icm.csic.es
 
 """
 
+
 ###############################################################################
                             # DIRECTORIOS #
 ###############################################################################
@@ -159,7 +160,7 @@ for i in input_data:
             if min(delta_t) < 1e-4: #1./(24*60*60) # 1 sec
                 index_t                     = np.where(delta_t == min(delta_t))                    
                 Rrs                         = np.append(Rrs,np.divide(all_data['lt'][z],all_data['ed'][index_t]),axis=0)
-                lt_dat                      = np.append(lt_dat,all_data['lt'][index_t],axis=0)
+                lt_dat                      = np.append(lt_dat,[all_data['lt'][z]],axis=0)
                 ed_dat                      = np.append(ed_dat,all_data['ed'][index_t],axis=0)
                 doy_rrs                     = np.append(doy_rrs,all_doy['lt'][z])
                 doy_str                     = [str(int(num)).zfill(3) for num in doy_rrs]
@@ -274,5 +275,3 @@ for i in input_data:
     for f in os.listdir(output_dir):
         os.remove(os.path.join(output_dir, f)) 
     print("Arch ----> "+ str(i) +"     Complete")
-        
-    
