@@ -1,0 +1,16 @@
+## ACOLITE Doñana
+inputfile=C:\Users\gmart\Proyectos\Curso_Cuenca_2025\4_sentinel\tmp\[change]
+output=C:/Users/gmart/Proyectos/Curso_Cuenca_2025/4_sentinel/acolite_py_win/Output
+atmospheric_correction= True
+aerosol_correction= dark_spectrum
+s2_target_res=10
+l2w_parameters=ndci
+l2w_mask= True
+l2w_mask_wave=2190
+l2w_mask_threshold= 0.0561
+rgb_rhot=True
+rgb_rhos=True
+map_l2w=True
+map_raster= True
+map_colorbar=True
+map_ext= tif

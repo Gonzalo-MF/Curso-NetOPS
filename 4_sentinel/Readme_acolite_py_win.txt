@@ -1,1 +1,0 @@
-Añadir la carpeta descargada desde Saco de acolite o ir a la pagina oficial e instalarlo 
